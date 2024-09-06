@@ -1,7 +1,7 @@
 {##################}
 {### POST BLOCK ###}
 {##################}
-<div class="post-block">
+<div class="post-block{% if post.prop %} element-page{% endif %}">
   {# Gallery support #}
   {{ post_gallery(post.photos) }}
 
@@ -46,6 +46,11 @@
           {%- else %}
             {{- post.title }}
             {{- post_edit(post.source) }}
+          {%- endif %}
+          {%- if post.prop %}
+            {%- if post.desc %}
+              <span class="element-description">{{ post.desc }}</span>
+            {%- endif %}
           {%- endif %}
         </{% if is_index %}h2{% else %}h1{% endif %}>
 

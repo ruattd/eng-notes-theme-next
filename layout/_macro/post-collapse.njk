@@ -1,18 +1,19 @@
 {% macro render(posts) %}
 {%- set current_year = '1970' %}
-{%- for post in posts.toArray() %}
+{%- for post in posts.toArray() | sort(attribute='title') %}
 
   {%- set year = date(post.date, 'YYYY') %}
-
+{#
   {%- if year !== current_year %}
     {%- set current_year = year %}
     <div class="collection-year">
       <span class="collection-header">{{ current_year }}{% if is_archive() %}<span class="collection-year-count">{{ post_count(year) }}</span>{% endif %}</span>
     </div>
   {%- endif %}
-
+#}
   <article itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
+{#
       <div class="post-meta-container">
         <time itemprop="dateCreated"
               datetime="{{ moment(post.date).format() }}"
@@ -20,7 +21,7 @@
           {{ date(post.date, 'MM-DD') }}
         </time>
       </div>
-
+#}
       <div class="post-title">
         {%- if post.link %}{# Link posts #}
           {%- set postTitleIcon = '<i class="fa fa-external-link-alt"></i>' %}
