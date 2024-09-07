@@ -98,6 +98,11 @@
         {{- next_inject('postBodyStart') }}
         {{- post.content }}
       {%- endif %}
+      {%- if post.prop %}
+        {# post rel #}
+        <header id="related" class="element-related-title">Related:</header>
+        {{ partial('_macro/element-list.njk', {posts: site.posts.toArray(), rel_filter: post.source | replace(".md", "") | replace("_posts/", "") }) }}
+      {%- endif %}
     </div>
 
     {#####################}

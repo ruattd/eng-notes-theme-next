@@ -7,25 +7,15 @@
 
 {% block content %}
 
-  {%- for post in page.posts.toArray() %}
+  {%- set posts = page.posts.toArray() %}
+
+  {%- for post in posts %}
     {%- if post.pin %}
       {{ partial('_macro/post.njk', {post: post, is_index: true}) }}
     {%- endif %}
   {%- endfor %}
 
-  {%- set lastcap = '0' %}
-  <div class="post-block">
-  {%- for post in page.posts.toArray() | sort(attribute='title') %}
-    {%- if post.title and (not post.pin) %}
-      {%- set cap = post.title | first | upper %}
-      {%- if cap !== lastcap %}
-        {%- set lastcap = cap %}
-        {{ partial('_macro/capital.njk', {cap: cap}) }}
-      {%- endif %}
-      {{ partial('_macro/element.njk', {post: post, is_index: true}) }}
-    {%- endif %}
-  {%- endfor %}
-  </div>
+  {{ partial('_macro/element-list.njk', {posts: posts, show_cap: true}) }}
 
   {%- include '_partials/pagination.njk' -%}
 

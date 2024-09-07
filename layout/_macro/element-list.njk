@@ -1,0 +1,25 @@
+<div class="post-block element-list{% if rel_filter %} element-related-list{% endif %}">
+{%- set lastcap = '0' %}
+{%- for post in posts %}
+  {%- if post.title and (not post.pin) and ((not rel_filter) or (post.rel === rel_filter)) %}
+    {# auto insert cap #}
+    {%- if show_cap %}
+      {%- set cap = post.title | first | upper %}
+      {%- if cap !== lastcap %}
+        {%- set lastcap = cap %}
+        {%- set caplower = cap | lower %}
+        <header class="post-header element-capital" id="{{ caplower }}">
+          <a href="#{{ caplower }}">{{ cap }}</a>
+        </header>
+      {%- endif %}
+    {%- endif %}
+    {# item #}
+    <div class="element-item post-body">
+      <span class="element-title">
+        {{- next_url(post.path, post.title or __('post.untitled'), {class: 'post-title-link', itemprop: 'url'}) }}
+      </span>
+      <span class="element-description">{{ post.desc }}</span>
+    </div>
+  {%- endif %}
+{%- endfor %}
+</div>
