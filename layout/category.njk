@@ -4,13 +4,14 @@
 
 {% block title %}{{ __('title.category') }}: {{ page.category }} | {{ title }}{% endblock %}
 
-{% block class %}category posts-collapse{% endblock %}
+{% block class %}category posts-expand{% endblock %}
 
 {% block content %}
 
   {######################}
   {### CATEGORY BLOCK ###}
   {######################}
+  {#}
   <div class="post-block">
     <div class="post-content">
       <div class="collection-title">
@@ -23,11 +24,20 @@
       {{ post_template.render(page.posts) }}
     </div>
   </div>
+  {#}
+
+  <div class="element-dictionary">
+    <header class="post-header post-block">
+      <h1 class="post-title">{{ __('title.category') }}: {{ page.category }}</h1>
+    </header>
+    {{ partial('_macro/element-list.njk', {posts: page.posts.toArray()}) }}
+  </div>
+
   {##########################}
   {### END CATEGORY BLOCK ###}
   {##########################}
 
-  {# {%- include '_partials/pagination.njk' -%} #}
+  {%- include '_partials/pagination.njk' -%}
 
 {% endblock %}
 
