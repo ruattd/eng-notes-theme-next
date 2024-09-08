@@ -1,7 +1,7 @@
 <div class="post-block element-list{% if rel_filter %} element-related-list{% endif %}">
 {%- set lastcap = '0' %}
 {%- for post in posts %}
-  {%- if post.title and (not post.pin) and ((not rel_filter) or (post.rel === rel_filter)) %}
+  {%- if post.title and (not post.pin) and ((not rel_filter) or (post.rel === rel_filter)) and ((not prop_filter) or (post.prop === prop_filter)) %}
     {# auto insert cap #}
     {%- if show_cap %}
       {%- set cap = post.title | first | upper %}
