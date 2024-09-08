@@ -1,15 +1,15 @@
 name: English
 
 title:
-  archive: Archive
-  category: Category
+  archive: Dictionary
+  category: Property
   tag: Tag
   schedule: Schedule
 
 menu:
   home: Home
-  archives: Archives
-  categories: Categories
+  archives: Dictionary
+  categories: Properties
   tags: Tags
   about: About
   search: Search
@@ -23,24 +23,24 @@ sidebar:
   links: Links
 
 post:
-  posted: Posted on
+  posted: Created on
   edited: Edited on
   created: Created
   modified: Modified
-  edit: Edit this post
+  edit: Edit this item
   in: In
   read_more: Read more
   untitled: Untitled
   sticky: Sticky
   views: Views
-  related_posts: Related Posts
+  related_posts: Related Items
   copyright:
-    author: Post author
-    link: Post link
+    author: Item author
+    link: Item link
     post_author: Written by
     post_link: This article originally appeared on
     license_title: Copyright Notice
-    license_content: "All articles in this blog are licensed under %s unless stating additionally."
+    license_content: "All articles in this notebook are licensed under %s unless stating additionally."
     license_content_reprint: "This article is a reprinted article and has been reprinted with permission. Please indicate the source!"
 
 footer:
@@ -59,19 +59,19 @@ counter:
     other: "%d tags in total"
 
   categories:
-    zero: No categories
-    one: 1 category in total
-    other: "%d categories in total"
+    zero: No properties
+    one: 1 property in total
+    other: "%d properties in total"
 
   archive_posts:
-    zero: No posts.
-    one: 1 post.
-    other: "%d posts in total."
+    zero: No items.
+    one: 1 item.
+    other: "%d items in total."
 
 state:
-  posts: posts
+  posts: items
   tags: tags
-  categories: categories
+  categories: properties
 
 search:
   placeholder: Searching...
@@ -87,7 +87,7 @@ cheers:
   great: Great
   excellent: Excellent
 
-keep_on: Keep on posting.
+keep_on: Keep on writing.
 
 symbol:
   comma: ", "
