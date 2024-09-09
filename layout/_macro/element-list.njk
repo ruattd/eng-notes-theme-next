@@ -1,7 +1,19 @@
 <div class="post-block element-list{% if rel_filter %} element-related-list{% endif %}">
 {%- set lastcap = '0' %}
 {%- for post in posts %}
-  {%- if post.title and (not post.pin) and ((not rel_filter) or (post.rel === rel_filter)) and ((not prop_filter) or (post.prop === prop_filter)) %}
+  {%- set relto_pass = false %}
+  {%- set post_id = post.source.replace(".md", "").replace("_posts/", "") %}
+  {%- if relto %}
+    {# check relto #}
+    {%- for id in relto %}
+      {%- if post_id === id %} {%- set relto_pass = true %} {%- endif %}
+    {%- endfor %}
+  {%- endif %}
+  {%- if post.title and (not post.pin) and (
+    ((not rel_filter) or ((post.rel === rel_filter)))
+    and ((not prop_filter) or (post.prop === prop_filter))
+    or (relto_pass)
+  ) %}
     {# auto insert cap #}
     {%- if show_cap %}
       {%- set cap = post.title | first | upper %}
