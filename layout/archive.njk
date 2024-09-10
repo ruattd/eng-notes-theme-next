@@ -42,7 +42,7 @@
     <header class="post-header post-block">
       <h1 class="post-title">{{ __('title.archive') }}</h1>
     </header>
-    {{ partial('_macro/element-list.njk', {posts: page.posts.toArray(), show_cap: true}) }}
+    {{ partial('_macro/element-list.njk', {posts: page.posts.toArray() | sort(attribute='title'), show_cap: true}) }}
   </div>
 
   {#########################}
