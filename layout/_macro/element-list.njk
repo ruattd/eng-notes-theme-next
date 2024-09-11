@@ -1,4 +1,4 @@
-<div class="post-block element-list{% if rel_filter %} element-related-list{% endif %}">
+<div class="post-block element-list{% if rel_id or rel_filter or relto %} element-related-list{% endif %}">
 {%- set lastcap = '0' %}
 {%- for post in posts %}
   {%- set relto_pass = false %}
@@ -9,10 +9,11 @@
       {%- if post_id === id %} {%- set relto_pass = true %} {%- endif %}
     {%- endfor %}
   {%- endif %}
-  {%- if post.title and (not post.pin) and (
-    ((not rel_filter) or ((post.rel === rel_filter)))
+  {%- if post.title and (not post.pin) and (true
+    and ((not rel_filter) or ((post.rel === rel_filter)))
     and ((not prop_filter) or (post.prop === prop_filter))
     or (relto_pass)
+    or (rel_id === post_id)
   ) %}
     {# auto insert cap #}
     {%- if show_cap %}

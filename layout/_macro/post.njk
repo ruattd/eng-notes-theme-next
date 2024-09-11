@@ -99,9 +99,9 @@
         {{- post.content }}
       {%- endif %}
       {%- if post.prop %}
-        {# post rel #}
+        {# related list #}
         <header id="related" class="element-related-title">Related:</header>
-        {{ partial('_macro/element-list.njk', {posts: site.posts.toArray(), rel_filter: post.source | replace(".md", "") | replace("_posts/", ""), relto: post.relto }) }}
+        {{ partial('_macro/element-list.njk', {posts: site.posts.toArray(), rel_id: post.rel, rel_filter: post.source | replace(".md", "") | replace("_posts/", ""), relto: post.relto }) }}
       {%- endif %}
     </div>
 
